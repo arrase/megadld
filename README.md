@@ -28,6 +28,7 @@ Edit as root:
 ```
 
 ### Run from cmd
+Run as root:
 ```
 # megadld start
 ```
