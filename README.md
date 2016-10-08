@@ -18,25 +18,25 @@ You can find megatools at:
 ### Install
 Run as root:
 ```
-# python setup.py install
+python setup.py install
 ```
 
 ### Configure download folder
 Edit as root:
 ```
-# vim /etc/megadld.conf
+vim /etc/megadld.conf
 ```
 
 ### Run from cmd
 Run as root:
 ```
-# megadld start
+megadld start
 ```
 
 ### Start on boot
 Run as root:
 ```
-# update-rc.d megadld defaults
+update-rc.d megadld defaults
 ```
 
 ### Troubleshooting
@@ -50,5 +50,5 @@ The daemon makes a privilege downgrade to the UID of the user who owns the downl
 ### ...where is the client??
 State in progress...but you can do something like
 ```
-# echo '{"url":"<mega_url_with_key>"}'| nc <server_ip> 8000
+echo '{"url":"<mega_url_with_key>"}'| nc <server_ip> 8000
 ```
