@@ -47,8 +47,6 @@ For the moment sending an invalid or malformed Mega url does not raise any error
 ### Other considerations
 The daemon makes a privilege downgrade to the UID of the user who owns the download folder
 
-### ...where is the client??
-State in progress...but you can do something like
-```
-echo '{"url":"<mega_url_with_key>"}' | nc <server_ip> 8000
-```
+### Available clients
+
+- [Python client](https://github.com/arrase/megadld-cli)
