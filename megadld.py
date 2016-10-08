@@ -2,9 +2,9 @@
 
 import sys
 
-from config_loader import Config
-from daemonize import Daemonize
-from log_writer import Logger
+from app.config_loader import Config
+from app.daemonize import Daemonize
+from app.log_writer import Logger
 
 __application__ = "megadld"
 __version__ = "0.1"
