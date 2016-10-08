@@ -19,8 +19,32 @@ You can find megatools at:
 Run as root:
 ```
 # python setup.py install
+```
+
+### Configure download folder
+Edit as root:
+```
+# vim /etc/megadld.conf
+```
+
+### Run from cmd
+```
+# megadld start
+```
+
+### Start on boot
+Run as root:
+```
 # update-rc.d megadld defaults
 ```
+
+### Troubleshooting
+The error messages are written to syslog.
+
+For the moment sending an invalid or malformed Mega url does not raise any error
+
+### Other considerations
+The daemon makes a privilege downgrade to the UID of the user who owns the download folder
 
 ### ...where is the client??
 State in progress...but you can do something like
