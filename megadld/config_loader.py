@@ -4,7 +4,7 @@ from sys import exit
 
 
 class Config:
-    _config_file = '/etc/megadld/megadld.conf'
+    _config_file = '/etc/megadld.conf'
     _log = None
 
     ip = None

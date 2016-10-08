@@ -9,11 +9,11 @@
 # Short-Description: Start Megadld daemon
 ### END INIT INFO
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin
 
 . /lib/lsb/init-functions
 
-DAEMON=/usr/bin/megadld
+DAEMON=/usr/local/sbin/megadld
 PID=/var/run/megadld.pid
 
 test -x $DAEMON || exit 5

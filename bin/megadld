@@ -2,12 +2,12 @@
 
 import sys
 
-from app.config_loader import Config
-from app.daemonize import Daemonize
-from app.log_writer import Logger
+from megadld.config_loader import Config
+from megadld.daemonize import Daemonize
+from megadld.log_writer import Logger
 
 __application__ = "megadld"
-__version__ = "0.1"
+__version__ = "0.1.0"
 __release__ = __application__ + '/' + __version__
 __author__ = "Juan Ezquerro LLanes"
 
