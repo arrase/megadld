@@ -31,8 +31,8 @@ class Config:
             self.port = config.getint('network', 'port')
             self.download_dir = config.get('storage', 'download_dir')
             self.megadl_path = config.get('system', 'megadl_path')
-        except ConfigParser.NoOptionError as e:
-            self._log.error(e.message)
+        except ConfigParser.NoOptionError:
+            self._log.error("Error reading config file.")
             exit(2)
 
     def _check_conf_values(self):

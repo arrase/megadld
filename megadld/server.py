@@ -1,4 +1,5 @@
 import socket
+from sys import exit
 
 from download_thread import DownloadThread
 
@@ -15,10 +16,15 @@ class Server():
         self._config = config
 
     def run(self):
-        self._tcpServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self._tcpServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self._tcpServer.bind((self._config.ip, self._config.port))
-        self._log.info("Waiting for connections ...")
+        try:
+            self._tcpServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self._tcpServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            self._tcpServer.bind((self._config.ip, self._config.port))
+        except socket.error:
+            self._log.error("There was an error when trying to bind the server")
+            exit(2)
+        finally:
+            self._log.info("Waiting for connections ...")
 
         while True:
             self._tcpServer.listen(4)
