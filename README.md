@@ -15,6 +15,13 @@ You can find megatools at:
 
 - [megatools at GitHub](https://github.com/megous/megatools)
 
+### Install
+Run as root:
+```
+# python setup.py install
+# update-rc.d megadld defaults
+```
+
 ### ...where is the client??
 State in progress...but you can do something like
 ```
