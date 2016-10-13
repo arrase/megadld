@@ -50,3 +50,4 @@ The daemon makes a privilege downgrade to the UID of the user who owns the downl
 ### Available clients
 
 - [Python client](https://github.com/arrase/megadld-cli)
+- [Android client](https://github.com/arrase/megadld-cli-android)
