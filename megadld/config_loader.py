@@ -11,6 +11,7 @@ class Config:
     port = None
     download_dir = None
     megadl_path = None
+    run_as = None
 
     def __init__(self, log):
         self._log = log
@@ -31,6 +32,7 @@ class Config:
             self.port = config.getint('network', 'port')
             self.download_dir = config.get('storage', 'download_dir')
             self.megadl_path = config.get('system', 'megadl_path')
+            self.run_as = config.get('system', 'run_as')
         except ConfigParser.NoOptionError:
             self._log.error("Error reading config file.")
             exit(2)

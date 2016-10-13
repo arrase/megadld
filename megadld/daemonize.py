@@ -1,5 +1,6 @@
 import atexit
 import os
+import pwd
 import sys
 import time
 from signal import SIGTERM
@@ -63,15 +64,14 @@ class Daemonize:
         atexit.register(self.delpid)
         pid = str(os.getpid())
         file(self._pidfile, 'w+').write("%s\n" % pid)
+        user = pwd.getpwnam(self._config.run_as)
+        os.chown(self._pidfile, user[2], user[3])
 
         # close log at exit
         atexit.register(self._log.close())
 
         # Change process uid
-        os.setuid(self._get_user_dir(self._config.download_dir))
-
-    def _get_user_dir(self, dir):
-        return os.stat(dir).st_uid
+        os.setuid(user[2])
 
     def delpid(self):
         os.remove(self._pidfile)
