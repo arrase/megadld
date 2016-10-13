@@ -21,7 +21,7 @@ Run as root:
 python setup.py install
 ```
 
-### Configure download folder
+### Configure
 Edit as root:
 ```
 vim /etc/megadld.conf
@@ -43,9 +43,6 @@ update-rc.d megadld defaults
 The error messages are written to syslog.
 
 For the moment sending an invalid or malformed Mega url does not raise any error
-
-### Other considerations
-The daemon makes a privilege downgrade to the UID of the user who owns the download folder
 
 ### Available clients
 
