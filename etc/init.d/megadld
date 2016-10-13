@@ -19,23 +19,23 @@ PID=/var/run/megadld.pid
 test -x $DAEMON || exit 5
 
 case $1 in
-	start)
-		log_daemon_msg "Starting Megadld daemon" "Megadld"
-		test -e $PID && log_daemon_msg "Megadld pid exist??" && rm $PID
-		$DAEMON start
-		log_end_msg $status
-  		;;
-	stop)
-		log_daemon_msg "Stopping Megadld daemon" "Megadld"
-		$DAEMON stop
-		log_end_msg $?
-  		;;
-	restart)
-		log_daemon_msg "Restart Megadld daemon" "Megadld"
-		$DAEMON restart
-  		;;
-	*)
-		echo "Usage: $0 {start|stop|restart}"
-		exit 2
-		;;
+        start)
+                log_daemon_msg "Starting Megadld daemon" "Megadld"
+                test -e $PID && log_daemon_msg "Megadld pid exist??" && rm $PID
+                exec $DAEMON start
+                log_end_msg 0
+                ;;
+        stop)
+                log_daemon_msg "Stopping Megadld daemon" "Megadld"
+                exec $DAEMON stop
+                log_end_msg 0
+                ;;
+        restart)
+                log_daemon_msg "Restart Megadld daemon" "Megadld"
+                $DAEMON restart
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|restart}"
+                exit 2
+                ;;
 esac
