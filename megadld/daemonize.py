@@ -21,18 +21,17 @@ class Daemonize:
         self._config = config
 
     def daemonize(self):
-        """
-        do the UNIX double-fork magic, see Stevens' "Advanced
-        Programming in the UNIX Environment" for details (ISBN 0201563177)
-        http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
-        """
+        # close log at exit
+        atexit.register(self._log.close())
+
+        # do the UNIX double-fork magic
         try:
             pid = os.fork()
             if pid > 0:
                 # exit first parent
                 sys.exit(0)
         except OSError, e:
-            self._log.error("fork #1 failed: %d (%s)\n" % (e.errno, e.strerror))
+            self._log.error("fork #1 failed: %d (%s)" % (e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
@@ -47,7 +46,7 @@ class Daemonize:
                 # exit from second parent
                 sys.exit(0)
         except OSError, e:
-            self._log.error("fork #2 failed: %d (%s)\n" % (e.errno, e.strerror))
+            self._log.error("fork #2 failed: %d (%s)" % (e.errno, e.strerror))
             sys.exit(1)
 
         # redirect standard file descriptors
@@ -60,15 +59,18 @@ class Daemonize:
         os.dup2(so.fileno(), sys.stdout.fileno())
         os.dup2(se.fileno(), sys.stderr.fileno())
 
+        # get user data
+        try:
+            user = pwd.getpwnam(self._config.run_as)
+        except KeyError:
+            self._log.error("user does not exists: %s" % self._config.run_as)
+            sys.exit(1)
+
         # write pidfile
         atexit.register(self.delpid)
         pid = str(os.getpid())
         file(self._pidfile, 'w+').write("%s\n" % pid)
-        user = pwd.getpwnam(self._config.run_as)
         os.chown(self._pidfile, user[2], user[3])
-
-        # close log at exit
-        atexit.register(self._log.close())
 
         # Change process uid
         os.setuid(user[2])
