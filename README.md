@@ -4,8 +4,8 @@ megadld is a demon for download public links from http://mega.co.nz.
 Written for my download server, build on [Raspberry Pi](https://www.raspberrypi.org/)
 
 ### Dependencies
-megatools is needed , the actual state of oficial [Meganz api](https://github.com/meganz/sdk) don't 
-allows downloading public links from Python , bindings are not finished.
+megatools is needed , the actual oficial release of [Meganz api](https://github.com/meganz/sdk) don't 
+allows downloading public links.
 
 You can find megatools at:
 
