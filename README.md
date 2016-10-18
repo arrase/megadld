@@ -5,8 +5,7 @@ Written for my download server, build on [Raspberry Pi](https://www.raspberrypi.
 
 ### Dependencies
 megatools is needed , the actual state of oficial [Meganz api](https://github.com/meganz/sdk) don't 
-allows downloading public links , there is a [pull request](https://github.com/meganz/sdk/pull/397) but is 
-not merged yet and the Python bindings are not finished.
+allows downloading public links from Python , bindings are not finished.
 
 You can find megatools at:
 
