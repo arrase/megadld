@@ -22,7 +22,7 @@ class Daemonize:
 
     def daemonize(self):
         # close log at exit
-        atexit.register(self._log.close())
+        atexit.register(self._log.close)
 
         # do the UNIX double-fork magic
         try:
